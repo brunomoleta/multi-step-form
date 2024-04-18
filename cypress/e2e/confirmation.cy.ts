@@ -30,15 +30,9 @@ describe('Confirmation page', () => {
       'Online Service +$1/mo'
     )
     cy.get('@addOnsInformation').should('contain', 'Larger Storage')
-    cy.get('[id="largerStoragePrice"]').should(
-      'contain.text',
-      '+$2/mo'
-    )
+    cy.get('[id="largerStoragePrice"]').should('contain.text', '+$2/mo')
     cy.get('@addOnsInformation').should('contain', 'Custom Profile')
-    cy.get('[id="customProfilePrice"]').should(
-      'contain.text',
-      '+$2/mo'
-    )
+    cy.get('[id="customProfilePrice"]').should('contain.text', '+$2/mo')
     cy.get('@total').should('contain', 'Total (per month)')
     cy.get('@total').should('contain', '+$20/mo')
   })
@@ -56,21 +50,12 @@ describe('Confirmation page', () => {
     cy.get('@planInformation').should('contain', 'arcade (yearly)')
     cy.get('@planInformation').should('contain', '$90/yr')
     cy.get('@addOnsInformation').should('contain', 'Online Service')
-    cy.get('[id="onlineServicePrice"]').should(
-      'contain.text',
-      '+$10/yr'
-    )
+    cy.get('[id="onlineServicePrice"]').should('contain.text', '+$10/yr')
 
     cy.get('@addOnsInformation').should('contain', 'Larger Storage')
-    cy.get('[id="customProfilePrice"]').should(
-      'contain.text',
-      '+$20/yr'
-    )
+    cy.get('[id="customProfilePrice"]').should('contain.text', '+$20/yr')
     cy.get('@addOnsInformation').should('contain', 'Custom Profile')
-    cy.get('[id="customProfilePrice"]').should(
-      'contain.text',
-      '+$20/yr'
-    )
+    cy.get('[id="customProfilePrice"]').should('contain.text', '+$20/yr')
     cy.get('@total').should('contain', 'Total (per year)')
     cy.get('@total').should('contain', '+$140/yr')
   })
@@ -86,15 +71,9 @@ describe('Confirmation page', () => {
     cy.get('@planInformation').should('contain', 'pro (monthly)')
     cy.get('@planInformation').should('contain', '$15/mo')
     cy.get('@addOnsInformation').should('contain', 'Online Service')
-    cy.get('[id="onlineServicePrice"]').should(
-      'contain.text',
-      '+$1/mo'
-    )
+    cy.get('[id="onlineServicePrice"]').should('contain.text', '+$1/mo')
     cy.get('@addOnsInformation').should('contain', 'Larger Storage')
-    cy.get('[id="largerStoragePrice"]').should(
-      'contain.text',
-      '+$2/mo'
-    )
+    cy.get('[id="largerStoragePrice"]').should('contain.text', '+$2/mo')
 
     cy.get('@addOnsInformation').should('not.contain', 'Custom Profile')
     cy.get('@total').should('contain', 'Total (per month)')

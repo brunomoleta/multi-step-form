@@ -10,9 +10,11 @@
     "preview": "vite preview",
     "cypress:open": "cypress open",
     "cypress:run": "cypress run",
-    "test": "vitest"
+    "test": "vitest",
+    "format": "prettier --write ."
   },
   "dependencies": {
+    "@radix-ui/react-visually-hidden": "^1.0.3",
     "@reduxjs/toolkit": "^1.9.5",
     "@types/styled-components": "^5.1.26",
     "react": "^18.2.0",
@@ -38,6 +40,7 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.3.4",
     "happy-dom": "^9.20.3",
+    "new-component": "^5.0.2",
     "prettier": "^2.8.8",
     "typescript": "^5.0.4",
     "vite": "^4.3.9",

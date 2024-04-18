@@ -5,7 +5,7 @@ import { InputContainer, InputName } from './TextInput.styled.tsx'
 type TextInputProps = UseControllerProps<PersonalInfoForm> & {
   placeholder?: string
   type: 'text' | 'email' | 'tel'
-  labelText: string;
+  labelText: string
 }
 
 const TextInput = (props: TextInputProps) => {

@@ -56,7 +56,7 @@ To handle form state and validation, the _react-hook-form_ library was used, whi
 
 ### Redux
 
-I initally wanted to create a type that could be used by both the store and the form, but since both are updated differently, but it became an issue. 
+I initally wanted to create a type that could be used by both the store and the form, but since both are updated differently, but it became an issue.
 
 In `redux.ts` exists the following types:
 
@@ -196,27 +196,27 @@ If neither `plan` or `subscription` are set, then we can assume that the user ha
 For the form sections, there are _next_ and _previous_ buttons that allow users to navigate between the different form sections. For each click handler of these, a dispatch function should be fired that saves the current form values into the store. The only sections that differ in behavior are the personal and confimraiton pages, since one verifies the user input and the other submits the form. In the case of `PlanSection.tsx`:
 
 ```typescript
-<ButtonFormContainerTwo>
+<ButtonFormContainer>
   <PreviousButton
     type="button"
     onClick={() => {
       dispatch(updatePlan(getValues('plan'), getValues('subscription')))
       dispatch(updateStep('personalInfo'))
     }}
-    data-testid="previousButton"
+    id="previousButton"
   >
     Go Back
   </PreviousButton>
   <NextButton
     type="button"
-    data-testid="nextButton"
+    id="nextButton"
     onClick={() => {
       handleSubmit(onSubmit)()
     }}
   >
     Next Step
   </NextButton>
-</ButtonFormContainerTwo>
+</ButtonFormContainer>
 ```
 
 `<PreviousButton>` grabs the current values and fires the helper function to save them to the store, and also calls the dispatch helper to set the current step to the previous one. `<NextButton>` calls `onSubmit` and saves the plan data and moves the step property to the next value.
@@ -288,7 +288,7 @@ const TextInput = (props: TextInputProps) => {
   const { field, fieldState } = useController(props)
 
   return (
-    <div data-testid={`${props.name}Input`}>
+    <div id={`${props.name}Input`}>
       <InputName>
         <label htmlFor={`${props.name}Input`}>{props.labelText}</label>
         {fieldState.isTouched && fieldState.invalid ? (
@@ -346,8 +346,8 @@ export const AddOnInputStyled = styled.label<AddOnInputStyledProps>`
 `
 ```
 
-An interface is set for the styled component, and if `checked` is true, then the border and background color will change to indicate the item has been selected. 
+An interface is set for the styled component, and if `checked` is true, then the border and background color will change to indicate the item has been selected.
 
 ## Conclusion
-This project was a great way to get more practice with _Redux_ and _react-hook-form_ and how they can be used together. One thing I would like to focus on the future is using a component library such as [Material UI]() to get the project off the ground much faster. If you suggestions or fixes, please feel free to open an issue or pull request. Thanks for reading!
 
+This project was a great way to get more practice with _Redux_ and _react-hook-form_ and how they can be used together. One thing I would like to focus on the future is using a component library such as [Material UI]() to get the project off the ground much faster. If you suggestions or fixes, please feel free to open an issue or pull request. Thanks for reading!

@@ -15,7 +15,6 @@ export type PersonalInfoForm = Pick<
 >
 
 const PersonalInfo = () => {
-
   const dispatch = useAppDispatch()
   const { name, email, phoneNumber } = useAppSelector((state) => state.form)
   const { control, handleSubmit, reset } = useForm<PersonalInfoForm>({
@@ -92,9 +91,7 @@ const PersonalInfo = () => {
               },
             }}
           />
-          <HiddenButton>
-            Next Step
-          </HiddenButton>
+          <HiddenButton>Next Step</HiddenButton>
         </PersonalForm>
       </Container>
 

@@ -10,7 +10,7 @@ const PlanTypeInput = (props: PlanTypeInputProps) => {
   const { field } = useController(props)
   return (
     <div id={`${props.value}SubInput`}>
-      <SubscriptionLabel checked={field.value === props.value }>
+      <SubscriptionLabel checked={field.value === props.value}>
         {props.value}
         <input
           {...field}

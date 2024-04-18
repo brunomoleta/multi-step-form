@@ -81,7 +81,7 @@ export const StepItem = styled.li`
       position: absolute;
       width: 11rem;
       left: 4.8rem;
-      gap: .6rem;
+      gap: 0.6rem;
     }
 
     & > div p:first-of-type {

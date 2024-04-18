@@ -2,24 +2,24 @@ import styled from 'styled-components'
 import device from '../device'
 
 export const Button = styled.button`
-    border-radius: 4px;
-    color: var(--grey);
-    padding: 0.65em 1.2em;
-    font-size: 1.4rem;
-    font-weight: 500;
+  border-radius: 4px;
+  color: var(--grey);
+  padding: 0.65em 1.2em;
+  font-size: 1.4rem;
+  font-weight: 500;
 
-    transition: color 300ms, background-color 300ms;
+  transition: color 300ms, background-color 300ms;
 
-    &:focus {
-        outline: 2px solid var(--purple);
-        outline-offset: 8px;
-    }
+  &:focus {
+    outline: 2px solid var(--purple);
+    outline-offset: 8px;
+  }
 
-    @media screen and (${device.laptop}) {
-        font-size: 1.6rem;
-        padding: 0.75em 1.5em;
-        border-radius: 8px;
-    }
+  @media screen and (${device.laptop}) {
+    font-size: 1.6rem;
+    padding: 0.75em 1.5em;
+    border-radius: 8px;
+  }
 `
 
 export const NextButton = styled(Button)`
@@ -36,7 +36,7 @@ export const ConfirmButton = styled(NextButton)`
   background-color: var(--purple);
   padding: 0.65em 1.6em;
 
-  &:hover{
+  &:hover {
     background-color: var(--button-confirm-active);
   }
 
@@ -60,7 +60,7 @@ export const PreviousButton = styled(Button)`
 
 export const ButtonFormContainer = styled.div`
   background-color: var(--white);
-    display: flex;
+  display: flex;
   width: 100%;
   padding: 1em 1em 1em 0em;
 

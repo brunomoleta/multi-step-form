@@ -6,7 +6,7 @@ env:
 on:
   pull_request:
     branches: [production]
-  push: 
+  push:
     branches: [production]
 
 jobs:

@@ -87,9 +87,7 @@ const PlanSection = () => {
               name="subscription"
             />
           </SubscriptionType>
-          <HiddenButton>
-            Next step
-          </HiddenButton>
+          <HiddenButton>Next step</HiddenButton>
         </PlanForm>
       </Container>
 
