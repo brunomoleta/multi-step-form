@@ -6,11 +6,8 @@ import { updateAddOns, updateStep } from '@/src/redux/reducer.ts'
 import { useEffect } from 'react'
 import { AddOnsForm, AddOnsStyled } from './AddOnSection.styled.tsx'
 import { Container } from '@/src/styles/utils/Container.styled.tsx'
-import {
-  ButtonFormContainerTwo,
-  NextButton,
-  PreviousButton,
-} from '@/src/styles/utils/Button.styled.tsx'
+import Buttons from '@/src/components/Buttons'
+import HiddenButton from '@/src/components/HiddenButton'
 
 export type AddOnForm = Pick<
   MultiStepForm,
@@ -37,7 +34,7 @@ const AddOnSection = () => {
     dispatch(updateStep('confirmation'))
   }
   return (
-    <AddOnsStyled data-testid="addOns">
+    <AddOnsStyled id={`addOns`}>
       <Container>
         <h2>Pick add-ons</h2>
         <p>Add-ons help enhance your gaming experience.</p>
@@ -64,34 +61,24 @@ const AddOnSection = () => {
             addOnDesc="Custom theme on your profile"
             addOnPrice={subscription === 'monthly' ? '+2/mo' : '+$20/yr'}
           />
+          <HiddenButton>Go to final step</HiddenButton>
         </AddOnsForm>
       </Container>
 
-      <ButtonFormContainerTwo>
-        <PreviousButton
-          type="button"
-          data-testid="previousButton"
-          onClick={() => {
-            dispatch(
-              updateAddOns({
-                onlineService: getValues('onlineService'),
-                largerStorage: getValues('largerStorage'),
-                customProfile: getValues('customProfile'),
-              })
-            )
-            dispatch(updateStep('plan'))
-          }}
-        >
-          Go Back
-        </PreviousButton>
-        <NextButton
-          type="submit"
-          data-testid="nextButton"
-          onClick={() => handleSubmit(onSubmit)()}
-        >
-          Next Step
-        </NextButton>
-      </ButtonFormContainerTwo>
+      <Buttons
+        whichStep="middle"
+        goForward={() => handleSubmit(onSubmit)()}
+        goBack={() => {
+          dispatch(
+            updateAddOns({
+              onlineService: getValues('onlineService'),
+              largerStorage: getValues('largerStorage'),
+              customProfile: getValues('customProfile'),
+            })
+          )
+          dispatch(updateStep('plan'))
+        }}
+      />
     </AddOnsStyled>
   )
 }

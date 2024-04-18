@@ -13,11 +13,8 @@ import {
   SubscriptionTypeToggle,
 } from './PlanSection.styled.tsx'
 import { Container } from '@/src/styles/utils/Container.styled.tsx'
-import {
-  ButtonFormContainerTwo,
-  NextButton,
-  PreviousButton,
-} from '@/src/styles/utils/Button.styled.tsx'
+import Buttons from '@/src/components/Buttons'
+import HiddenButton from '@/src/components/HiddenButton'
 
 export type PlanForm = Pick<MultiStepForm, 'plan' | 'subscription'>
 
@@ -48,7 +45,7 @@ const PlanSection = () => {
   const currentSub = watch('subscription')
 
   return (
-    <PlanStyled data-testid="selectPlan">
+    <PlanStyled id="selectPlan">
       <Container>
         <h2>Select your plan</h2>
         <p>You have the option of monthly or yearly billing.</p>
@@ -90,30 +87,22 @@ const PlanSection = () => {
               name="subscription"
             />
           </SubscriptionType>
+          <HiddenButton>
+            Next step
+          </HiddenButton>
         </PlanForm>
       </Container>
 
-      <ButtonFormContainerTwo>
-        <PreviousButton
-          type="button"
-          onClick={() => {
-            dispatch(updatePlan(getValues('plan'), getValues('subscription')))
-            dispatch(updateStep('personalInfo'))
-          }}
-          data-testid="previousButton"
-        >
-          Go Back
-        </PreviousButton>
-        <NextButton
-          type="button"
-          data-testid="nextButton"
-          onClick={() => {
-            handleSubmit(onSubmit)()
-          }}
-        >
-          Next Step
-        </NextButton>
-      </ButtonFormContainerTwo>
+      <Buttons
+        goBack={() => {
+          dispatch(updatePlan(getValues('plan'), getValues('subscription')))
+          dispatch(updateStep('personalInfo'))
+        }}
+        whichStep="middle"
+        goForward={() => {
+          handleSubmit(onSubmit)()
+        }}
+      />
     </PlanStyled>
   )
 }

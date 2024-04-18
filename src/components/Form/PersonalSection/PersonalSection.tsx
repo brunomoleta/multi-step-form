@@ -6,10 +6,8 @@ import { updatePersonalInformation, updateStep } from '@/src/redux/reducer.ts'
 import { useEffect } from 'react'
 import { Container } from '@/src/styles/utils/Container.styled.tsx'
 import { PersonalForm, PersonalStyled } from './PersonalSection.styled.tsx'
-import {
-  ButtonFormContainer,
-  NextButton,
-} from '@/src/styles/utils/Button.styled.tsx'
+import Buttons from '@/src/components/Buttons'
+import HiddenButton from '@/src/components/HiddenButton'
 
 export type PersonalInfoForm = Pick<
   MultiStepForm,
@@ -17,6 +15,7 @@ export type PersonalInfoForm = Pick<
 >
 
 const PersonalInfo = () => {
+
   const dispatch = useAppDispatch()
   const { name, email, phoneNumber } = useAppSelector((state) => state.form)
   const { control, handleSubmit, reset } = useForm<PersonalInfoForm>({
@@ -50,7 +49,7 @@ const PersonalInfo = () => {
   }
 
   return (
-    <PersonalStyled data-testid="personalInfo">
+    <PersonalStyled id={`personalInfo`}>
       <Container>
         <h2>Personal info</h2>
         <p>Please provide your name, email address, and phone number.</p>
@@ -93,20 +92,18 @@ const PersonalInfo = () => {
               },
             }}
           />
+          <HiddenButton>
+            Next Step
+          </HiddenButton>
         </PersonalForm>
       </Container>
 
-      <ButtonFormContainer>
-        <NextButton
-          type="button"
-          data-testid="nextButton"
-          onClick={() => {
-            handleSubmit(onSubmit)()
-          }}
-        >
-          Next Step
-        </NextButton>
-      </ButtonFormContainer>
+      <Buttons
+        whichStep="first"
+        goForward={() => {
+          handleSubmit(onSubmit)()
+        }}
+      />
     </PersonalStyled>
   )
 }
