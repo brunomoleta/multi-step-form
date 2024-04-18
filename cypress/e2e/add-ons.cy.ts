@@ -8,12 +8,12 @@ describe('Add-ons form section', () => {
     // arcade plan, montly subscription
     cy.completePlanStep()
 
-    cy.get('[data-testid="addOns"]').as('addOns')
-    cy.get('[data-testid="formSteps"]').as('formSteps')
-    cy.get('[data-testid="nextButton"]').as('nextButton')
-    cy.get('[data-testid="onlineServiceInput"]').as('onlineServiceInput')
-    cy.get('[data-testid="largerStorageInput"]').as('largerStorageInput')
-    cy.get('[data-testid="customProfileInput"]').as('customProfileInput')
+    cy.get('[id="addOns"]').as('addOns')
+    cy.get('[id="formSteps"]').as('formSteps')
+    cy.get('[id="nextButton"]').as('nextButton')
+    cy.get('[id="onlineServiceInput"]').as('onlineServiceInput')
+    cy.get('[id="largerStorageInput"]').as('largerStorageInput')
+    cy.get('[id="customProfileInput"]').as('customProfileInput')
   })
 
   it('no options should be selected, should be able to proceed', () => {
@@ -26,7 +26,7 @@ describe('Add-ons form section', () => {
       .should('contain', 'Add-Ons')
 
     cy.get('@nextButton').click()
-    cy.get('[data-testid="confirmation"]').should('exist')
+    cy.get('[id="confirmation"]').should('exist')
     cy.get('@addOns').should('not.exist')
   })
 
@@ -41,13 +41,13 @@ describe('Add-ons form section', () => {
     cy.get('@customProfileInput').find('input').should('be.checked')
 
     cy.get('@nextButton').click()
-    cy.get('[data-testid="confirmation"]').should('exist')
+    cy.get('[id="confirmation"]').should('exist')
     cy.get('@addOns').should('not.exist')
   })
 
   it('should be able to proceed with no selections', () => {
     cy.get('@nextButton').click()
-    cy.get('[data-testid="confirmation"]').should('exist')
+    cy.get('[id="confirmation"]').should('exist')
     cy.get('@addOns').should('not.exist')
   })
 
@@ -63,19 +63,19 @@ describe('Add-ons form section', () => {
     cy.get('@onlineServiceInput').find('input').click()
 
     cy.get('@nextButton').click()
-    cy.get('[data-testid="confirmation"]').should('exist')
+    cy.get('[id="confirmation"]').should('exist')
     cy.get('@addOns').should('not.exist')
 
-    cy.get('[data-testid="previousButton"]').click()
+    cy.get('[id="previousButton"]').click()
     // component re-rendered, need to re-select elements
-    cy.get('[data-testid="addOns"]').should('exist')
-    cy.get('[data-testid="onlineServiceInput"]')
+    cy.get('[id="addOns"]').should('exist')
+    cy.get('[id="onlineServiceInput"]')
       .find('input')
       .should('be.checked')
-    cy.get('[data-testid="largerStorageInput"]')
+    cy.get('[id="largerStorageInput"]')
       .find('input')
       .should('not.be.checked')
-    cy.get('[data-testid="customProfileInput"]')
+    cy.get('[id="customProfileInput"]')
       .find('input')
       .should('not.be.checked')
   })

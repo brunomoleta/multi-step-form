@@ -4,12 +4,12 @@
 describe('Personal info form section', () => {
   beforeEach(() => {
     cy.visit('http://localhost:3000')
-    cy.get('[data-testid="personalInfo"]').as('personalInfo')
-    cy.get('[data-testid="formSteps"]').as('formSteps')
-    cy.get('[data-testid="nameInput"]').as('nameInput')
-    cy.get('[data-testid="emailInput"]').as('emailInput')
-    cy.get('[data-testid="phoneNumberInput"]').as('phoneNumberInput')
-    cy.get('[data-testid="nextButton"]').as('nextButton')
+    cy.get('[id="personalInfo"]').as('personalInfo')
+    cy.get('[id="formSteps"]').as('formSteps')
+    cy.get('[id="nameInput"]').as('nameInput')
+    cy.get('[id="emailInput"]').as('emailInput')
+    cy.get('[id="phoneNumberInput"]').as('phoneNumberInput')
+    cy.get('[id="nextButton"]').as('nextButton')
     cy.get('h2').as('formStepTitle')
   })
 
@@ -79,7 +79,7 @@ describe('Personal info form section', () => {
     cy.get('@nextButton').click()
 
     cy.get('@personalInfo').should('not.exist')
-    cy.get('[data-testid="previousButton"]').click()
+    cy.get('[id="previousButton"]').click()
     cy.get('@personalInfo').should('exist')
 
     cy.get('@nameInput').find('input').should('have.value', 'test')
