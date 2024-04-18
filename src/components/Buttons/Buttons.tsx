@@ -1,12 +1,12 @@
 import {
-  ButtonFormContainerTwo, ConfirmButton,
+  ButtonFormContainer, ConfirmButton,
   NextButton,
   PreviousButton,
 } from '@/src/styles/utils/Button.styled.tsx'
 
 function Buttons({ goForward, goBack, whichStep }: buttons) {
   return (
-    <ButtonFormContainerTwo>
+    <ButtonFormContainer>
       {whichStep !== "first" && (
         <PreviousButton
           type="button"
@@ -29,7 +29,7 @@ function Buttons({ goForward, goBack, whichStep }: buttons) {
         Next Step
       </NextButton>
       }
-    </ButtonFormContainerTwo>
+    </ButtonFormContainer>
   )
 }
 
