@@ -38,22 +38,22 @@
 
 // create steps for completing a step of the form
 Cypress.Commands.add('completePersonalInfoStep', () => {
-  cy.get('[data-testid="nameInput"]').find('input').type('Test Name')
-  cy.get('[data-testid="emailInput"]').find('input').type('testmeail@gmail.com')
-  cy.get('[data-testid="phoneNumberInput"]').find('input').type('1234567890')
-  cy.get('[data-testid="nextButton"]').click()
+  cy.get('[id="nameInput"]').find('input').type('Test Name')
+  cy.get('[id="emailInput"]').find('input').type('testmeail@gmail.com')
+  cy.get('[id="phoneNumberInput"]').find('input').type('1234567890')
+  cy.get('[id="nextButton"]').click()
 })
 
 Cypress.Commands.add('completePlanStep', () => {
-  cy.get('[data-testid="proPlanInput"]').find('input').click()
-  cy.get('[data-testid="nextButton"]').click()
+  cy.get('[id="proPlanInput"]').find('input').click()
+  cy.get('[id="nextButton"]').click()
 })
 
 Cypress.Commands.add('completeAddOnsStep', () => {
-  cy.get('[data-testid="onlineServiceInput"]').find('input').click()
-  cy.get('[data-testid="largerStorageInput"]').find('input').click()
-  cy.get('[data-testid="customProfileInput"]').find('input').click()
-  cy.get('[data-testid="nextButton"]').click()
+  cy.get('[id="onlineServiceInput"]').find('input').click()
+  cy.get('[id="largerStorageInput"]').find('input').click()
+  cy.get('[id="customProfileInput"]').find('input').click()
+  cy.get('[id="nextButton"]').click()
 })
 
 declare global {

@@ -12,7 +12,7 @@ const AddOnInput = (props: AddOnInputProps) => {
   const { field } = useController(props)
 
   return (
-    <AddOnInputStyled checked={field.value} data-testid={`${props.name}Input`}>
+    <AddOnInputStyled checked={field.value} id={`${props.name}Input`}>
       <input
         type="checkbox"
         id={props.name}

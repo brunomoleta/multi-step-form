@@ -9,7 +9,7 @@ type PlanTypeInputProps = UseControllerProps<PlanForm> & {
 const PlanTypeInput = (props: PlanTypeInputProps) => {
   const { field } = useController(props)
   return (
-    <div data-testid={`${props.value}SubInput`}>
+    <div id={`${props.value}SubInput`}>
       <SubscriptionLabel checked={field.value === props.value }>
         {props.value}
         <input

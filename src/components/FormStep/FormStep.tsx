@@ -4,7 +4,7 @@ import { FormStepStyled, StepItem, StepList } from './FormStep.styled'
 const FormStep = () => {
   const { step } = useAppSelector((state) => state.form)
   return (
-    <FormStepStyled data-testid="formSteps">
+    <FormStepStyled id={`formSteps`}>
       <StepList aria-live="polite">
         <StepItem data-active={step === 'personalInfo' ? 'true' : 'false'}>
           <div>

@@ -12,7 +12,7 @@ const TextInput = (props: TextInputProps) => {
   const { field, fieldState } = useController(props)
 
   return (
-    <div data-testid={`${props.name}Input`}>
+    <div id={`${props.name}Input`}>
       <InputName>
         <label htmlFor={`${props.name}Input`}>{props.labelText}</label>
         {fieldState.isTouched && fieldState.invalid ? (

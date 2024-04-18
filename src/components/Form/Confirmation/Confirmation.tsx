@@ -14,17 +14,14 @@ import {
   TotalPrice,
 } from './Confirmation.styled'
 import { Container } from '@/src/styles/utils/Container.styled'
-import {
-  ButtonFormContainerTwo,
-  ConfirmButton,
-  PreviousButton,
-} from '@/src/styles/utils/Button.styled'
 import thankYouIcon from '@/src/assets/images/icon-thank-you.svg'
+import Buttons from '@/src/components/Buttons'
 
 const Submission = () => {
   const dispatch = useAppDispatch()
+
   return (
-    <SubmissionStyled data-testid="thankYouMessage">
+    <SubmissionStyled id={`thankYouMessage`}>
       <Container>
         <img src={thankYouIcon} alt="checkmark" />
         <h2>Thank you!</h2>
@@ -48,7 +45,7 @@ const Submission = () => {
 
 const ConfirmingForm = () => {
   return (
-    <ConfirmingFormStyled data-testid="confirmation">
+    <ConfirmingFormStyled id={`confirmation`}>
       <Container>
         <div></div>
       </Container>
@@ -81,13 +78,13 @@ const Confirmation = () => {
   if (formSubmitted) return <Submission />
 
   return (
-    <ConfirmationStyled data-testid="confirmation">
+    <ConfirmationStyled id={`confirmation`}>
       <Container>
         <h2>Finishing up</h2>
         <p>Double-check everything looks OK before confirming</p>
 
         <ConfirmationInfo>
-          <PlanInfo data-testid="planInformation">
+          <PlanInfo id={`planInformation`}>
             <p>
               {plan} ({subscription})
               <button
@@ -108,9 +105,9 @@ const Confirmation = () => {
 
           {/* Add-ons */}
           <AddOnInfo>
-            <ul data-testid="addOnInformation">
+            <ul id={`addOnInformation`}>
               {formTotal.addOnPrice.map(([addOn, price]) => (
-                <li key={addOn} data-testid={`${addOn}Price`}>
+                <li key={addOn} id={`${addOn}Price`}>
                   <p>{convertToTitleCase(addOn)} </p>
 
                   <p>
@@ -123,7 +120,7 @@ const Confirmation = () => {
           </AddOnInfo>
         </ConfirmationInfo>
 
-        <TotalPrice data-testid="total">
+        <TotalPrice id={`total`}>
           <p>
             Total &#40;per {subscription === 'monthly' ? 'month' : 'year'}&#41;
           </p>
@@ -134,30 +131,19 @@ const Confirmation = () => {
         </TotalPrice>
       </Container>
 
-      <ButtonFormContainerTwo>
-        <PreviousButton
-          type="button"
-          onClick={() => {
-            dispatch(updateStep('addOns'))
-          }}
-          data-testid="previousButton"
-        >
-          Go Back
-        </PreviousButton>
-        <ConfirmButton
-          type="button"
-          onClick={() => {
-            setSubmittingForm(true)
-            setTimeout(() => {
-              setSubmittingForm(false)
-              setFormSubmitted(true)
-            }, 2000)
-          }}
-          data-testid="confirmButton"
-        >
-          Confirm
-        </ConfirmButton>
-      </ButtonFormContainerTwo>
+      <Buttons
+        whichStep="end"
+        goBack={() => {
+          dispatch(updateStep('addOns'))
+        }}
+        goForward={() => {
+          setSubmittingForm(true)
+          setTimeout(() => {
+            setSubmittingForm(false)
+            setFormSubmitted(true)
+          }, 2000)
+        }}
+      />
     </ConfirmationStyled>
   )
 }

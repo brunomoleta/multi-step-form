@@ -14,8 +14,8 @@ const PlanInput = (props: PlanInputProps) => {
   const { field } = useController(props)
   return (
     <PlanInputStyled
-      data-testid={`${props.value}PlanInput`}
-      checked={field.value === props.value ? true : false}
+      id={`${props.value}PlanInput`}
+      checked={field.value === props.value}
     >
       <PlanLabel>
         <img
@@ -33,7 +33,7 @@ const PlanInput = (props: PlanInputProps) => {
           value={props.value}
           name={props.name}
           type="radio"
-          checked={field.value === props.value ? true : false}
+          checked={field.value === props.value}
         />
         <span>{props.value}</span>
         {props.children}
